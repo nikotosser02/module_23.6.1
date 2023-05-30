@@ -24,6 +24,12 @@ class CryptoConvert:
 
         try:
             amount = float(amount)
+            try:
+                if amount < 0:
+                    raise ValueError(" меньше 0")
+            except ValueError:
+                raise ConvertionException(f'Ввели отрицательное число для конвертации {amount}')
+
         except ValueError:
             raise ConvertionException(f'Не удалось обработать количество {amount}')
 
